@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthTracker - Your Personal Health Dashboard</title>
+
+    <meta name="description" content="Track your daily health activities, monitor vital metrics, and achieve your wellness goals with HealthTracker" />
+    <meta name="author" content="Dualite Alpha" />
+
+    <meta property="og:title" content="HealthTracker - Your Personal Health Dashboard" />
+    <meta property="og:description" content="Track your daily health activities, monitor vital metrics, and achieve your wellness goals with HealthTracker" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://ibb.co/67X3xfSV" />
+    <meta property="og:image:alt" content="HealthTracker app dashboard preview" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HealthTracker - Your Personal Health Dashboard" />
+    <meta name="twitter:description" content="Track your daily health activities, monitor vital metrics, and achieve your wellness goals with HealthTracker" />
+    <meta name="twitter:site" content="@dualitedev" />
+    <meta name="twitter:image" content="https://ibb.co/67X3xfSV" />
+
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/HLfD5wgf/dualite-favicon.png" />
+    <link rel="canonical" href="https://alpha.dualite.dev" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "HealthTracker",
+        "url": "https://alpha.dualite.dev",
+        "description": "Track your daily health activities, monitor vital metrics, and achieve your wellness goals with HealthTracker",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Dualite Alpha"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <div class="container">
+          <div class="header__content">
+            <div class="logo">
+              <h1>HealthTracker</h1>
+            </div>
+            <nav class="nav">
+              <button class="nav__item nav__item--active" data-tab="dashboard">Dashboard</button>
+              <button class="nav__item" data-tab="activities">Activities</button>
+              <button class="nav__item" data-tab="metrics">Metrics</button>
+              <button class="nav__item" data-tab="goals">Goals</button>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="container">
+          <!-- Dashboard Tab -->
+          <div class="tab-content tab-content--active" id="dashboard">
+            <div class="dashboard">
+              <div class="welcome">
+                <h2>Good morning! 👋</h2>
+                <p>Here's your health summary for today</p>
+              </div>
+
+              <div class="stats-grid">
+                <div class="stat-card stat-card--steps">
+                  <div class="stat-card__icon">👟</div>
+                  <div class="stat-card__content">
+                    <h3>Steps</h3>
+                    <div class="stat-card__value" id="steps-value">0</div>
+                    <div class="stat-card__goal">Goal: 10,000</div>
+                    <div class="stat-card__progress">
+                      <div class="progress-bar">
+                        <div class="progress-bar__fill" id="steps-progress"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="stat-card stat-card--water">
+                  <div class="stat-card__icon">💧</div>
+                  <div class="stat-card__content">
+                    <h3>Water</h3>
+                    <div class="stat-card__value" id="water-value">0 glasses</div>
+                    <div class="stat-card__goal">Goal: 8 glasses</div>
+                    <div class="stat-card__progress">
+                      <div class="progress-bar">
+                        <div class="progress-bar__fill" id="water-progress"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="stat-card stat-card--sleep">
+                  <div class="stat-card__icon">😴</div>
+                  <div class="stat-card__content">
+                    <h3>Sleep</h3>
+                    <div class="stat-card__value" id="sleep-value">0h 0m</div>
+                    <div class="stat-card__goal">Goal: 8 hours</div>
+                    <div class="stat-card__progress">
+                      <div class="progress-bar">
+                        <div class="progress-bar__fill" id="sleep-progress"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="stat-card stat-card--calories">
+                  <div class="stat-card__icon">🔥</div>
+                  <div class="stat-card__content">
+                    <h3>Calories</h3>
+                    <div class="stat-card__value" id="calories-value">0</div>
+                    <div class="stat-card__goal">Goal: 2,200</div>
+                    <div class="stat-card__progress">
+                      <div class="progress-bar">
+                        <div class="progress-bar__fill" id="calories-progress"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                  <button class="action-btn" onclick="addSteps()">
+                    <span class="action-btn__icon">👟</span>
+                    Add Steps
+                  </button>
+                  <button class="action-btn" onclick="addWater()">
+                    <span class="action-btn__icon">💧</span>
+                    Drink Water
+                  </button>
+                  <button class="action-btn" onclick="logWeight()">
+                    <span class="action-btn__icon">⚖️</span>
+                    Log Weight
+                  </button>
+                  <button class="action-btn" onclick="logSleep()">
+                    <span class="action-btn__icon">😴</span>
+                    Log Sleep
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activities Tab -->
+          <div class="tab-content" id="activities">
+            <div class="activities">
+              <h2>Daily Activities</h2>
+              
+              <div class="activity-section">
+                <h3>Steps Tracker</h3>
+                <div class="input-group">
+                  <input type="number" id="steps-input" placeholder="Enter steps" min="0" max="50000">
+                  <button onclick="updateSteps()">Add Steps</button>
+                </div>
+              </div>
+
+              <div class="activity-section">
+                <h3>Water Intake</h3>
+                <div class="water-tracker">
+                  <div class="water-glasses" id="water-glasses">
+                    <!-- Water glasses will be generated here -->
+                  </div>
+                  <button onclick="addWater()" class="add-water-btn">Add Glass</button>
+                </div>
+              </div>
+
+              <div class="activity-section">
+                <h3>Exercise Log</h3>
+                <div class="exercise-form">
+                  <select id="exercise-type">
+                    <option value="">Select exercise</option>
+                    <option value="running">Running</option>
+                    <option value="walking">Walking</option>
+                    <option value="cycling">Cycling</option>
+                    <option value="swimming">Swimming</option>
+                    <option value="yoga">Yoga</option>
+                    <option value="weightlifting">Weight Lifting</option>
+                  </select>
+                  <input type="number" id="exercise-duration" placeholder="Duration (minutes)" min="1">
+                  <button onclick="logExercise()">Log Exercise</button>
+                </div>
+                <div class="exercise-history" id="exercise-history"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metrics Tab -->
+          <div class="tab-content" id="metrics">
+            <div class="metrics">
+              <h2>Health Metrics</h2>
+              
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <h3>Weight</h3>
+                  <div class="metric-input">
+                    <input type="number" id="weight-input" placeholder="Weight (kg)" step="0.1" min="30" max="300">
+                    <button onclick="saveWeight()">Save</button>
+                  </div>
+                  <div class="metric-history" id="weight-history"></div>
+                </div>
+
+                <div class="metric-card">
+                  <h3>Blood Pressure</h3>
+                  <div class="metric-input">
+                    <input type="number" id="systolic-input" placeholder="Systolic" min="70" max="200">
+                    <input type="number" id="diastolic-input" placeholder="Diastolic" min="40" max="130">
+                    <button onclick="saveBloodPressure()">Save</button>
+                  </div>
+                  <div class="metric-history" id="bp-history"></div>
+                </div>
+
+                <div class="metric-card">
+                  <h3>Heart Rate</h3>
+                  <div class="metric-input">
+                    <input type="number" id="heartrate-input" placeholder="BPM" min="40" max="220">
+                    <button onclick="saveHeartRate()">Save</button>
+                  </div>
+                  <div class="metric-history" id="hr-history"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Goals Tab -->
+          <div class="tab-content" id="goals">
+            <div class="goals">
+              <h2>Health Goals</h2>
+              
+              <div class="goals-grid">
+                <div class="goal-card">
+                  <h3>Daily Steps</h3>
+                  <div class="goal-input">
+                    <input type="number" id="steps-goal-input" placeholder="Target steps" min="1000" max="50000">
+                    <button onclick="updateGoal('steps')">Update Goal</button>
+                  </div>
+                  <div class="goal-current" id="steps-goal-display">Current: 10,000 steps</div>
+                </div>
+
+                <div class="goal-card">
+                  <h3>Daily Water</h3>
+                  <div class="goal-input">
+                    <input type="number" id="water-goal-input" placeholder="Target glasses" min="1" max="20">
+                    <button onclick="updateGoal('water')">Update Goal</button>
+                  </div>
+                  <div class="goal-current" id="water-goal-display">Current: 8 glasses</div>
+                </div>
+
+                <div class="goal-card">
+                  <h3>Sleep Hours</h3>
+                  <div class="goal-input">
+                    <input type="number" id="sleep-goal-input" placeholder="Target hours" min="4" max="12" step="0.5">
+                    <button onclick="updateGoal('sleep')">Update Goal</button>
+                  </div>
+                  <div class="goal-current" id="sleep-goal-display">Current: 8 hours</div>
+                </div>
+
+                <div class="goal-card">
+                  <h3>Weekly Exercise</h3>
+                  <div class="goal-input">
+                    <input type="number" id="exercise-goal-input" placeholder="Target minutes/week" min="30" max="1000">
+                    <button onclick="updateGoal('exercise')">Update Goal</button>
+                  </div>
+                  <div class="goal-current" id="exercise-goal-display">Current: 150 minutes/week</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
