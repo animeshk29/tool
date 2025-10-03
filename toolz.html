@@ -1,280 +1,820 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HealthTracker - Your Personal Health Dashboard</title>
-
-    <meta name="description" content="Track your daily health activities, monitor vital metrics, and achieve your wellness goals with HealthTracker" />
-    <meta name="author" content="Dualite Alpha" />
-
-    <meta property="og:title" content="HealthTracker - Your Personal Health Dashboard" />
-    <meta property="og:description" content="Track your daily health activities, monitor vital metrics, and achieve your wellness goals with HealthTracker" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://ibb.co/67X3xfSV" />
-    <meta property="og:image:alt" content="HealthTracker app dashboard preview" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="HealthTracker - Your Personal Health Dashboard" />
-    <meta name="twitter:description" content="Track your daily health activities, monitor vital metrics, and achieve your wellness goals with HealthTracker" />
-    <meta name="twitter:site" content="@dualitedev" />
-    <meta name="twitter:image" content="https://ibb.co/67X3xfSV" />
-
-    <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/HLfD5wgf/dualite-favicon.png" />
-    <link rel="canonical" href="https://alpha.dualite.dev" />
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "HealthTracker",
-        "url": "https://alpha.dualite.dev",
-        "description": "Track your daily health activities, monitor vital metrics, and achieve your wellness goals with HealthTracker",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Dualite Alpha"
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to compress images while maintaining quality. Reduce file size for web optimization.">
+    <meta name="keywords" content="image compression, optimize images, reduce file size, web optimization">
+    <title>ImageCompress Pro - Optimize Your Images for Web</title>
+    <style>
+        :root {
+            --primary: #4a6cf7;
+            --primary-dark: #3a5ce5;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --danger: #dc3545;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
-      }
-    </script>
-  </head>
-  <body>
-    <div id="app">
-      <header class="header">
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        .app-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 992px) {
+            .app-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .upload-section, .preview-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 0.5rem;
+        }
+
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: var(--border-radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary);
+            background-color: rgba(74, 108, 247, 0.05);
+        }
+
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .upload-area p {
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-success {
+            background: var(--success);
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .compression-controls {
+            margin: 1.5rem 0;
+        }
+
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: #e0e0e0;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+        }
+
+        .slider-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .quality-label {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .preview-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .preview-container {
+                flex-direction: row;
+            }
+        }
+
+        .image-preview {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .image-info {
+            flex: 1;
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .savings {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .action-buttons .btn {
+            flex: 1;
+        }
+
+        .ad-container {
+            margin: 2rem 0;
+            text-align: center;
+            background: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .ad-placeholder {
+            background: #f8f9fa;
+            border: 1px dashed #dee2e6;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            color: var(--secondary);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: left;
+            }
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            position: relative;
+        }
+
+        .loading::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
         <div class="container">
-          <div class="header__content">
-            <div class="logo">
-              <h1>HealthTracker</h1>
-            </div>
-            <nav class="nav">
-              <button class="nav__item nav__item--active" data-tab="dashboard">Dashboard</button>
-              <button class="nav__item" data-tab="activities">Activities</button>
-              <button class="nav__item" data-tab="metrics">Metrics</button>
-              <button class="nav__item" data-tab="goals">Goals</button>
-            </nav>
-          </div>
+            <h1>ImageCompress Pro</h1>
+            <p>Optimize your images for web with our powerful compression tool. Reduce file size without sacrificing quality.</p>
         </div>
-      </header>
+    </header>
 
-      <main class="main">
-        <div class="container">
-          <!-- Dashboard Tab -->
-          <div class="tab-content tab-content--active" id="dashboard">
-            <div class="dashboard">
-              <div class="welcome">
-                <h2>Good morning! 👋</h2>
-                <p>Here's your health summary for today</p>
-              </div>
+    <main class="container">
+        <div class="ad-container">
+            <!-- AdSense Ad Unit -->
+            <div class="ad-placeholder">
+                <p>Advertisement</p>
+                <!-- Replace with your AdSense code -->
+                <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_AD_UNIT_ID" crossorigin="anonymous"></script> -->
+                <!-- Your AdSense ad unit code here -->
+            </div>
+        </div>
 
-              <div class="stats-grid">
-                <div class="stat-card stat-card--steps">
-                  <div class="stat-card__icon">👟</div>
-                  <div class="stat-card__content">
-                    <h3>Steps</h3>
-                    <div class="stat-card__value" id="steps-value">0</div>
-                    <div class="stat-card__goal">Goal: 10,000</div>
-                    <div class="stat-card__progress">
-                      <div class="progress-bar">
-                        <div class="progress-bar__fill" id="steps-progress"></div>
-                      </div>
-                    </div>
-                  </div>
+        <div class="app-container">
+            <section class="upload-section">
+                <h2 class="section-title">Upload & Compress</h2>
+                
+                <div class="upload-area" id="dropArea">
+                    <i>📁</i>
+                    <p>Drag & drop your image here</p>
+                    <p>or</p>
+                    <input type="file" id="fileInput" accept="image/*" class="hidden">
+                    <button class="btn" id="browseBtn">Browse Files</button>
                 </div>
 
-                <div class="stat-card stat-card--water">
-                  <div class="stat-card__icon">💧</div>
-                  <div class="stat-card__content">
-                    <h3>Water</h3>
-                    <div class="stat-card__value" id="water-value">0 glasses</div>
-                    <div class="stat-card__goal">Goal: 8 glasses</div>
-                    <div class="stat-card__progress">
-                      <div class="progress-bar">
-                        <div class="progress-bar__fill" id="water-progress"></div>
-                      </div>
+                <div class="compression-controls">
+                    <div class="control-group">
+                        <label for="compressionLevel">Compression Level</label>
+                        <div class="slider-container">
+                            <input type="range" id="compressionLevel" class="slider" min="0" max="100" value="80">
+                            <span class="slider-value" id="compressionValue">80%</span>
+                        </div>
+                        <div class="quality-label">
+                            <span>Smaller File</span>
+                            <span>Better Quality</span>
+                        </div>
                     </div>
-                  </div>
+
+                    <div class="control-group">
+                        <label for="maxWidth">Maximum Width (px)</label>
+                        <input type="number" id="maxWidth" class="slider" value="1920" min="100" max="4000">
+                    </div>
+
+                    <div class="control-group">
+                        <label for="formatSelect">Output Format</label>
+                        <select id="formatSelect" class="slider">
+                            <option value="original">Original Format</option>
+                            <option value="jpeg">JPEG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WebP</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="stat-card stat-card--sleep">
-                  <div class="stat-card__icon">😴</div>
-                  <div class="stat-card__content">
-                    <h3>Sleep</h3>
-                    <div class="stat-card__value" id="sleep-value">0h 0m</div>
-                    <div class="stat-card__goal">Goal: 8 hours</div>
-                    <div class="stat-card__progress">
-                      <div class="progress-bar">
-                        <div class="progress-bar__fill" id="sleep-progress"></div>
-                      </div>
+                <button class="btn btn-success" id="compressBtn" disabled>Compress Image</button>
+            </section>
+
+            <section class="preview-section">
+                <h2 class="section-title">Preview & Download</h2>
+                
+                <div class="preview-container">
+                    <div class="image-preview">
+                        <p>Original Image</p>
+                        <canvas id="originalCanvas" class="hidden"></canvas>
+                        <div id="originalPreview"></div>
                     </div>
-                  </div>
+                    
+                    <div class="image-preview">
+                        <p>Compressed Image</p>
+                        <canvas id="compressedCanvas" class="hidden"></canvas>
+                        <div id="compressedPreview"></div>
+                    </div>
                 </div>
 
-                <div class="stat-card stat-card--calories">
-                  <div class="stat-card__icon">🔥</div>
-                  <div class="stat-card__content">
-                    <h3>Calories</h3>
-                    <div class="stat-card__value" id="calories-value">0</div>
-                    <div class="stat-card__goal">Goal: 2,200</div>
-                    <div class="stat-card__progress">
-                      <div class="progress-bar">
-                        <div class="progress-bar__fill" id="calories-progress"></div>
-                      </div>
+                <div class="image-info">
+                    <div class="info-item">
+                        <span>Original Size:</span>
+                        <span id="originalSize">-</span>
                     </div>
-                  </div>
+                    <div class="info-item">
+                        <span>Compressed Size:</span>
+                        <span id="compressedSize">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span>Reduction:</span>
+                        <span id="reduction" class="savings">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span>Compression Ratio:</span>
+                        <span id="compressionRatio">-</span>
+                    </div>
                 </div>
-              </div>
 
-              <div class="quick-actions">
-                <h3>Quick Actions</h3>
                 <div class="action-buttons">
-                  <button class="action-btn" onclick="addSteps()">
-                    <span class="action-btn__icon">👟</span>
-                    Add Steps
-                  </button>
-                  <button class="action-btn" onclick="addWater()">
-                    <span class="action-btn__icon">💧</span>
-                    Drink Water
-                  </button>
-                  <button class="action-btn" onclick="logWeight()">
-                    <span class="action-btn__icon">⚖️</span>
-                    Log Weight
-                  </button>
-                  <button class="action-btn" onclick="logSleep()">
-                    <span class="action-btn__icon">😴</span>
-                    Log Sleep
-                  </button>
+                    <button class="btn btn-secondary" id="resetBtn">Reset</button>
+                    <button class="btn" id="downloadBtn" disabled>Download Compressed</button>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Activities Tab -->
-          <div class="tab-content" id="activities">
-            <div class="activities">
-              <h2>Daily Activities</h2>
-              
-              <div class="activity-section">
-                <h3>Steps Tracker</h3>
-                <div class="input-group">
-                  <input type="number" id="steps-input" placeholder="Enter steps" min="0" max="50000">
-                  <button onclick="updateSteps()">Add Steps</button>
-                </div>
-              </div>
-
-              <div class="activity-section">
-                <h3>Water Intake</h3>
-                <div class="water-tracker">
-                  <div class="water-glasses" id="water-glasses">
-                    <!-- Water glasses will be generated here -->
-                  </div>
-                  <button onclick="addWater()" class="add-water-btn">Add Glass</button>
-                </div>
-              </div>
-
-              <div class="activity-section">
-                <h3>Exercise Log</h3>
-                <div class="exercise-form">
-                  <select id="exercise-type">
-                    <option value="">Select exercise</option>
-                    <option value="running">Running</option>
-                    <option value="walking">Walking</option>
-                    <option value="cycling">Cycling</option>
-                    <option value="swimming">Swimming</option>
-                    <option value="yoga">Yoga</option>
-                    <option value="weightlifting">Weight Lifting</option>
-                  </select>
-                  <input type="number" id="exercise-duration" placeholder="Duration (minutes)" min="1">
-                  <button onclick="logExercise()">Log Exercise</button>
-                </div>
-                <div class="exercise-history" id="exercise-history"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Metrics Tab -->
-          <div class="tab-content" id="metrics">
-            <div class="metrics">
-              <h2>Health Metrics</h2>
-              
-              <div class="metrics-grid">
-                <div class="metric-card">
-                  <h3>Weight</h3>
-                  <div class="metric-input">
-                    <input type="number" id="weight-input" placeholder="Weight (kg)" step="0.1" min="30" max="300">
-                    <button onclick="saveWeight()">Save</button>
-                  </div>
-                  <div class="metric-history" id="weight-history"></div>
-                </div>
-
-                <div class="metric-card">
-                  <h3>Blood Pressure</h3>
-                  <div class="metric-input">
-                    <input type="number" id="systolic-input" placeholder="Systolic" min="70" max="200">
-                    <input type="number" id="diastolic-input" placeholder="Diastolic" min="40" max="130">
-                    <button onclick="saveBloodPressure()">Save</button>
-                  </div>
-                  <div class="metric-history" id="bp-history"></div>
-                </div>
-
-                <div class="metric-card">
-                  <h3>Heart Rate</h3>
-                  <div class="metric-input">
-                    <input type="number" id="heartrate-input" placeholder="BPM" min="40" max="220">
-                    <button onclick="saveHeartRate()">Save</button>
-                  </div>
-                  <div class="metric-history" id="hr-history"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Goals Tab -->
-          <div class="tab-content" id="goals">
-            <div class="goals">
-              <h2>Health Goals</h2>
-              
-              <div class="goals-grid">
-                <div class="goal-card">
-                  <h3>Daily Steps</h3>
-                  <div class="goal-input">
-                    <input type="number" id="steps-goal-input" placeholder="Target steps" min="1000" max="50000">
-                    <button onclick="updateGoal('steps')">Update Goal</button>
-                  </div>
-                  <div class="goal-current" id="steps-goal-display">Current: 10,000 steps</div>
-                </div>
-
-                <div class="goal-card">
-                  <h3>Daily Water</h3>
-                  <div class="goal-input">
-                    <input type="number" id="water-goal-input" placeholder="Target glasses" min="1" max="20">
-                    <button onclick="updateGoal('water')">Update Goal</button>
-                  </div>
-                  <div class="goal-current" id="water-goal-display">Current: 8 glasses</div>
-                </div>
-
-                <div class="goal-card">
-                  <h3>Sleep Hours</h3>
-                  <div class="goal-input">
-                    <input type="number" id="sleep-goal-input" placeholder="Target hours" min="4" max="12" step="0.5">
-                    <button onclick="updateGoal('sleep')">Update Goal</button>
-                  </div>
-                  <div class="goal-current" id="sleep-goal-display">Current: 8 hours</div>
-                </div>
-
-                <div class="goal-card">
-                  <h3>Weekly Exercise</h3>
-                  <div class="goal-input">
-                    <input type="number" id="exercise-goal-input" placeholder="Target minutes/week" min="30" max="1000">
-                    <button onclick="updateGoal('exercise')">Update Goal</button>
-                  </div>
-                  <div class="goal-current" id="exercise-goal-display">Current: 150 minutes/week</div>
-                </div>
-              </div>
-            </div>
-          </div>
+            </section>
         </div>
-      </main>
-    </div>
 
-    <script type="module" src="/main.js"></script>
-  </body>
+        <div class="ad-container">
+            <!-- AdSense Ad Unit -->
+            <div class="ad-placeholder">
+                <p>Advertisement</p>
+                <!-- Replace with your AdSense code -->
+                <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_AD_UNIT_ID" crossorigin="anonymous"></script> -->
+                <!-- Your AdSense ad unit code here -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About ImageCompress Pro</h3>
+                    <p>Our free online tool helps you optimize images for web, reducing file size while maintaining visual quality for faster loading websites.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Supported Formats</h3>
+                    <ul>
+                        <li>JPEG</li>
+                        <li>PNG</li>
+                        <li>WebP</li>
+                        <li>GIF</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ImageCompress Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // DOM Elements
+        const fileInput = document.getElementById('fileInput');
+        const browseBtn = document.getElementById('browseBtn');
+        const dropArea = document.getElementById('dropArea');
+        const compressionLevel = document.getElementById('compressionLevel');
+        const compressionValue = document.getElementById('compressionValue');
+        const maxWidth = document.getElementById('maxWidth');
+        const formatSelect = document.getElementById('formatSelect');
+        const compressBtn = document.getElementById('compressBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const originalPreview = document.getElementById('originalPreview');
+        const compressedPreview = document.getElementById('compressedPreview');
+        const originalCanvas = document.getElementById('originalCanvas');
+        const compressedCanvas = document.getElementById('compressedCanvas');
+        const originalSize = document.getElementById('originalSize');
+        const compressedSize = document.getElementById('compressedSize');
+        const reduction = document.getElementById('reduction');
+        const compressionRatio = document.getElementById('compressionRatio');
+        const toast = document.getElementById('toast');
+
+        // Variables
+        let originalImage = null;
+        let originalFileSize = 0;
+        let compressedImageData = null;
+
+        // Event Listeners
+        browseBtn.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFileSelect);
+        compressionLevel.addEventListener('input', updateCompressionValue);
+        compressBtn.addEventListener('click', compressImage);
+        resetBtn.addEventListener('click', resetTool);
+        downloadBtn.addEventListener('click', downloadCompressedImage);
+
+        // Drag and drop functionality
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            dropArea.style.borderColor = 'var(--primary)';
+            dropArea.style.backgroundColor = 'rgba(74, 108, 247, 0.1)';
+        }
+
+        function unhighlight() {
+            dropArea.style.borderColor = '#ccc';
+            dropArea.style.backgroundColor = '';
+        }
+
+        dropArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFileSelect(e) {
+            const files = e.target.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.type.match('image.*')) {
+                    loadImage(file);
+                } else {
+                    showToast('Please select a valid image file', 'error');
+                }
+            }
+        }
+
+        function loadImage(file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    originalImage = img;
+                    originalFileSize = file.size;
+                    
+                    // Display original image
+                    displayImage(originalPreview, img);
+                    
+                    // Update file size info
+                    originalSize.textContent = formatFileSize(originalFileSize);
+                    
+                    // Enable compress button
+                    compressBtn.disabled = false;
+                    
+                    showToast('Image loaded successfully!', 'success');
+                };
+                img.src = e.target.result;
+            };
+            
+            reader.readAsDataURL(file);
+        }
+
+        function displayImage(container, img) {
+            container.innerHTML = '';
+            const imgElement = document.createElement('img');
+            imgElement.src = img.src;
+            container.appendChild(imgElement);
+        }
+
+        function updateCompressionValue() {
+            compressionValue.textContent = `${compressionLevel.value}%`;
+        }
+
+        function compressImage() {
+            if (!originalImage) return;
+            
+            compressBtn.classList.add('loading');
+            compressBtn.disabled = true;
+            
+            // Use setTimeout to allow UI to update before compression
+            setTimeout(() => {
+                try {
+                    const quality = compressionLevel.value / 100;
+                    const maxWidthValue = parseInt(maxWidth.value);
+                    
+                    // Calculate new dimensions while maintaining aspect ratio
+                    let width = originalImage.width;
+                    let height = originalImage.height;
+                    
+                    if (width > maxWidthValue) {
+                        height = (maxWidthValue / width) * height;
+                        width = maxWidthValue;
+                    }
+                    
+                    // Set up canvas for compression
+                    originalCanvas.width = originalImage.width;
+                    originalCanvas.height = originalImage.height;
+                    compressedCanvas.width = width;
+                    compressedCanvas.height = height;
+                    
+                    const originalCtx = originalCanvas.getContext('2d');
+                    const compressedCtx = compressedCanvas.getContext('2d');
+                    
+                    // Draw original image
+                    originalCtx.drawImage(originalImage, 0, 0);
+                    
+                    // Draw compressed image
+                    compressedCtx.drawImage(originalImage, 0, 0, width, height);
+                    
+                    // Get output format
+                    let outputFormat = 'image/jpeg';
+                    if (formatSelect.value === 'png') {
+                        outputFormat = 'image/png';
+                    } else if (formatSelect.value === 'webp') {
+                        outputFormat = 'image/webp';
+                    } else {
+                        // Use original format
+                        outputFormat = originalImage.src.includes('data:image/png') ? 'image/png' : 'image/jpeg';
+                    }
+                    
+                    // Get compressed image data
+                    compressedImageData = compressedCanvas.toDataURL(outputFormat, quality);
+                    
+                    // Display compressed image
+                    const compressedImg = new Image();
+                    compressedImg.onload = function() {
+                        displayImage(compressedPreview, compressedImg);
+                        
+                        // Calculate compressed file size (approximate)
+                        const compressedFileSize = Math.round((compressedImageData.length - 'data:image/jpeg;base64,'.length) * 0.75);
+                        
+                        // Update file info
+                        compressedSize.textContent = formatFileSize(compressedFileSize);
+                        
+                        const sizeReduction = originalFileSize - compressedFileSize;
+                        const reductionPercentage = ((sizeReduction / originalFileSize) * 100).toFixed(1);
+                        
+                        reduction.textContent = `${formatFileSize(sizeReduction)} (${reductionPercentage}%)`;
+                        compressionRatio.textContent = `${(originalFileSize / compressedFileSize).toFixed(1)}:1`;
+                        
+                        // Enable download button
+                        downloadBtn.disabled = false;
+                        
+                        compressBtn.classList.remove('loading');
+                        compressBtn.disabled = false;
+                        
+                        showToast('Image compressed successfully!', 'success');
+                    };
+                    compressedImg.src = compressedImageData;
+                    
+                } catch (error) {
+                    console.error('Compression error:', error);
+                    showToast('Error compressing image', 'error');
+                    compressBtn.classList.remove('loading');
+                    compressBtn.disabled = false;
+                }
+            }, 100);
+        }
+
+        function downloadCompressedImage() {
+            if (!compressedImageData) return;
+            
+            const link = document.createElement('a');
+            link.download = `compressed-image.${getFileExtension(formatSelect.value)}`;
+            link.href = compressedImageData;
+            link.click();
+            
+            showToast('Image downloaded!', 'success');
+        }
+
+        function getFileExtension(format) {
+            switch(format) {
+                case 'jpeg': return 'jpg';
+                case 'png': return 'png';
+                case 'webp': return 'webp';
+                default: return 'jpg';
+            }
+        }
+
+        function resetTool() {
+            fileInput.value = '';
+            originalImage = null;
+            compressedImageData = null;
+            
+            originalPreview.innerHTML = '<p>No image selected</p>';
+            compressedPreview.innerHTML = '<p>Compressed image will appear here</p>';
+            
+            originalSize.textContent = '-';
+            compressedSize.textContent = '-';
+            reduction.textContent = '-';
+            compressionRatio.textContent = '-';
+            
+            compressBtn.disabled = true;
+            downloadBtn.disabled = true;
+            
+            compressionLevel.value = 80;
+            compressionValue.textContent = '80%';
+            maxWidth.value = 1920;
+            formatSelect.value = 'original';
+            
+            showToast('Tool reset', 'info');
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function showToast(message, type = 'info') {
+            toast.textContent = message;
+            toast.className = 'toast';
+            
+            // Set background color based on type
+            if (type === 'success') {
+                toast.style.background = 'var(--success)';
+            } else if (type === 'error') {
+                toast.style.background = 'var(--danger)';
+            } else {
+                toast.style.background = 'var(--secondary)';
+            }
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize
+        updateCompressionValue();
+    </script>
+</body>
 </html>
